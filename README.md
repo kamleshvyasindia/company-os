@@ -22,6 +22,19 @@ Built for teams of 1–10. Works for non-technical founders: if you can answer q
 
 The agent interviews you (one question at a time), seeds your Company Brain, connects your tools read-only, installs your first workflow with you, and sets up the daily rituals. You answer questions; it does the work.
 
+### Adding a teammate (marketing, CS, anyone)
+
+Once the OS exists, you don't re-install it per person — they **join** it:
+
+1. Add them as a collaborator on this private GitHub repo (and grant read access to the tools their role needs).
+2. They install Codex or Claude Code and authenticate it to GitHub once.
+3. They open the repo in their agent and paste:
+   ```
+   Read ONBOARD_FOR_AGENTS.md — I'm joining the <marketing/support/...> team.
+   ```
+
+Their agent inherits the whole company brain, scopes itself to their department (`departments/<dept>/AGENTS.md`), connects only their tools, and runs them through their first workflow. Non-technical teammates never touch git — the agent does it; they talk in plain English. When someone needs access *without* git, or genuinely shouldn't see another department's data, that's the trigger to move to a hosted brain server (gbrain on Supabase).
+
 ## What's inside
 
 ```
