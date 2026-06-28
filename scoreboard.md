@@ -8,10 +8,13 @@ Updated weekly by `skills/weekly-scoreboard.md`. Baselines set at install.
 | Gate decisions logged / failures caught | 0 / 0 | | | catching failures = the gates work |
 | Skills in registry | 6 | | | starter set |
 | Self-fixes shipped (dream/CHANGELOG) | 0 | | | is the company learning while it sleeps? |
-| Brain pages (customers / people / decisions) | 0 | | | legibility, made countable |
+| Brain pages (customers / people / decisions) | 17 | | | legibility, made countable |
 | Stale load-bearing pages | 0 | | | the brain's honesty metric |
-| [Business metric 1 — set at install] | | | | from interview Q10 |
-| [Business metric 2 — set at install] | | | | |
+| Monthly revenues | TBD | | | |
+| BD Proposal Volume / Pipeline | TBD | | | |
+| Vacant Positions | TBD | | | |
+| Client Satisfaction Level | TBD | | | |
+| AI Training Wins (Target: 5 Cr) | 0 | | | 90-day focus |
 
 ## Founder review packet
 

@@ -19,5 +19,5 @@ The litmus test, asked every quarter: **"If you were building this company today
 
 Signed:
 
-- ______________________ (founder) — date: ______
+- Kamlesh Vyas (founder) — date: 2026-06-28
 - ______________________ (founder) — date: ______
