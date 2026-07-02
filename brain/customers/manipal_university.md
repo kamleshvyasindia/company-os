@@ -1,18 +1,13 @@
 # Manipal University
 
-- **Who:** Private Sector Higher Education Institution, managed by [[people/deb.md]]
+- **Who:** Private Sector Higher Education Institution
 - **Status:** Active
-- **Where we talk:** Email, meeting recorder, Notion
+- **Key Contact / Owner:** [[people/deb.md]]
+- **Where we talk:** Email, official meetings
 
 ## What they want from us
-Consulting and delivery on:
-- **AI-related work**
-
-## History
-- 2026-06-28 — Initialized customer page in Company OS.
-
-## Open items
-- Execution of AI deliverables.
+Development and implementation of AI applications and training.
+- **AI-related work**: Active delivery in progress, part of the strategic AI training pipeline.
 
 ## Gaps
-- GAP: Scope and contract value of AI work.
+- GAP: Specific project WBS codes and values.

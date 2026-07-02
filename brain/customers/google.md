@@ -1,18 +1,16 @@
 # Google
 
-- **Who:** Private Sector Client / Partner, managed by [[people/deb.md]]
+- **Who:** Private Sector Client / Technology Partner
 - **Status:** Active
-- **Where we talk:** Email, meeting recorder, Notion, tech channels
+- **Key Contact / Owner:** [[people/deb.md]]
+- **Where we talk:** Email, meeting recorder, Slack, Notion
 
 ## What they want from us
-Collaboration and implementation on:
-- **AI-related projects**
-
-## History
-- 2026-06-28 — Initialized customer page in Company OS.
+Collaborative execution of AI workshops and training programs.
+- **Google RBR (Internal) - AI Training**: Value: ₹40,00,000 (Lumpsum fee for 4 AI workshops). Start date: June 22, 2026. Duration: 3 months.
 
 ## Open items
-- Execution of AI deliverables.
+- Deliver the remaining AI workshops under Google RBR.
 
 ## Gaps
-- GAP: Scope and contract value of AI work.
+- GAP: Long-term private sector technology strategy alignment.

@@ -1,18 +1,13 @@
-# Government of UP
+# Government of Uttar Pradesh
 
-- **Who:** Uttar Pradesh State Government, led by [[people/arvind.md]]
+- **Who:** UP State Government (Planning Department)
 - **Status:** Active
-- **Where we talk:** Email, official meetings
+- **Key Contact / Owner:** [[people/arvind.md]]
+- **Where we talk:** Physical meetings in Lucknow, Email
 
-## What they want from us
-Consulting support for:
-- **OTD project**
-
-## History
-- 2026-06-28 — Initialized customer page in Company OS.
-
-## Open items
-- Deliverables and timeline for UP OTD.
+## Active Projects
+- **UP Planning (Education and Skills)** (`DEPX0191-01-04`): Value: ₹1,56,00,000. 5 positions. PD/EM: [[people/arvind.md]]
+- **UP AI Project** (Pipeline prospect): Managed by [[people/arvind.md]]
 
 ## Gaps
-- GAP: Detailed pipeline values or project terms.
+- GAP: Expansion details for USD 1 TN Economy boosting project.

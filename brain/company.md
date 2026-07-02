@@ -6,30 +6,34 @@
 Deloitte India's Education Practice provides professional consulting and support services to governments and private enterprises. The practice territory covers India and neighboring countries, focusing on the higher education and school education segments. Services include setting up and implementing educational policies, as well as establishing and optimizing academic institutions.
 
 ## Stage & numbers that matter
-- **Team Size**: ~125 members (8 leaders and 120 supporting staff).
-- **Revenue Mix**: Currently ~90% government services based.
-- **Runway & Growth**: Actively shifting focus to private sector services (universities, Google, Edtech) and AI-related training and applications.
-- **Numbers Checked Weekly/Monthly**:
-  1. Monthly revenues against target.
-  2. Business development (sales number for the year/coming years, sales proposal volume, pipeline strength).
-  3. Vacant positions against requirements.
-  4. Client satisfaction levels.
-  5. AI area wins and delivery outcomes.
-- GAP: Exact monthly revenue targets and numbers.
-- GAP: Specific client satisfaction score baseline.
+- **Team Size**: ~125 members based across Delhi, Punjab, Gujarat, UP, and Bangalore.
+- **Revenue Mix**: Currently ~90% government services based, with a strategic transition to private sector/AI training services (~10%).
+- **Active Engagements**: 24 active projects (19 government PMU/policy contracts + 5 private sector / AI training projects).
+- **Monthly Revenue Metrics**:
+  - Max Value per month: ₹2.83 Crore (Government PMUs) + ₹50.8 Lakh (Private/AI).
+  - Current Net Sales Rate (NSR) per month: ₹2.20 Crore (Government PMUs) + ₹50.8 Lakh (Private/AI).
+- **Hiring & Deploys (Government PMUs)**:
+  - Total Positions: 106
+  - Staffed: 89
+  - Vacant: 13
+  - Resigned: 4
+- **90-Day AI Target Status**: ₹50 Lakhs closed (Google University AI: ₹40L, ICICI AI: ₹10L) against the ₹5 Crore target.
 
 ## 90-day focus
 - **Primary Goal**: Make significant headway in the AI training business and close at least 5 crores INR worth of business for AI training to realize outcomes from current efforts.
 
 ## Team
-- [[people/kamlesh.md]] — Business Development Lead
-- [[people/priyank.md]] — Project Lead (Education & Skills, Gujarat)
-- [[people/deependra.md]] — Project Lead (VSK & APAAR, School Education, Delhi)
-- [[people/meethi.md]] — Project Lead (PDC, Punjab)
-- [[people/bhavisha.md]] — Project Lead (School Education DGSE, Punjab)
-- [[people/arvind.md]] — Project Lead (UP OTD)
-- [[people/rajat.md]] — MoE Higher Education Account Lead (Bharat Innovates, University Townships, PMRC)
-- [[people/deb.md]] — AI & Edtech Projects Lead
+- [[people/kamlesh.md]] — Lead Partner (Business Development Lead)
+- [[people/priyank.md]] — Project Director (Gujarat Education & Skills)
+- [[people/deependra.md]] — Project Director (NCERT School Ed, VSK & APAAR, Delhi)
+- [[people/meethi.md]] — Project Director (Punjab PDC)
+- [[people/bhavisha.md]] — Project Director (Punjab DGSE)
+- [[people/arvind.md]] — Project Director (UP Planning, University Townships)
+- [[people/rajat.md]] — Associate Director / Project Director (MoE Higher Ed Account)
+- [[people/deb.md]] — Director / Project Director (AI & Edtech)
+- [[people/gaurav_mathur.md]] — Engagement Manager (Gujarat GOAL, KSU, NEP-KCG)
+- [[people/ved_gupta.md]] — Engagement Manager (NCERT RVSK, APAAR)
+- [[people/manish_kumar.md]] — Project Manager (ADB Green Skills)
 
 ## How decisions get made
 - **Internal Compliance & Audit Constraints**: Every new project requires extensive internal approvals taking several weeks to navigate independence issues (e.g. not working with organizations where Deloitte acts as auditor).

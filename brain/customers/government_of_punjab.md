@@ -1,19 +1,14 @@
 # Government of Punjab
 
-- **Who:** Punjab State Government, led by [[people/meethi.md]] (PDC) and [[people/bhavisha.md]] (DGSE)
+- **Who:** Punjab State Government (DGSE & PDC)
 - **Status:** Active
-- **Where we talk:** Email, official meetings
+- **Key Contact / Owner:** [[people/meethi.md]] (PDC), [[people/bhavisha.md]] (DGSE)
+- **Where we talk:** Email, official meetings in Chandigarh
 
-## What they want from us
-Consulting and management across two key entities:
-- **Punjab Development Commission (PDC)**: Led by [[people/meethi.md]]
-- **Director General of School Education (DGSE)**: School Education Department, led by [[people/bhavisha.md]]
-
-## History
-- 2026-06-28 — Initialized customer page in Company OS.
+## Active Projects
+- **Integrated Education PMU DGSE** (`NATX1000-01-01`): Value: ₹2,69,14,834. 8 positions (6 staffed, 1 vacant, 1 resigned). PD/EM: [[people/bhavisha.md]]
+- **Punjab PDC** (`NAT04286-01-01`): Value: ₹1,06,43,913. 5 positions. PD/EM: [[people/meethi.md]]
+- **English Hackathon Punjab**: Scheduled task under [[people/kamlesh.md]]
 
 ## Open items
-- Deliverables for PDC and DGSE Punjab.
-
-## Gaps
-- GAP: Detailed pipeline values or project terms.
+- DGSE extension and deployment details.

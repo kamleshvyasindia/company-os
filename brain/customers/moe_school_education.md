@@ -1,19 +1,13 @@
-# Ministry of Education, Department of School Education (NCERT)
+# Ministry of Education, NCERT (School Education)
 
-- **Who:** Central Government Department of School Education and NCERT, led by [[people/deependra.md]]
+- **Who:** Central School Education Segment (NCERT)
 - **Status:** Active
-- **Where we talk:** Email, official meetings
+- **Key Contact / Owner:** [[people/deependra.md]]
+- **Where we talk:** Email, official meetings in Delhi
 
-## What they want from us
-Consulting and management for central school education platforms/databases:
-- **VSK (Vidya Samiksha Kendra)**
-- **APAAR (Automated Permanent Academic Account Registry)**
-
-## History
-- 2026-06-28 — Initialized customer page in Company OS.
+## Active Projects
+- **RVSK (CIET-NCERT)** (`NATX0837-01-01`): PMU for RVSK — Value: ₹8,97,81,195. Start date: April 2024. Duration: 36 months. 11 positions (9 staffed, 2 vacant). EM: [[people/ved_gupta.md]], PD: [[people/deependra.md]]
+- **APAAR** (`NATX0926-01-01`): APAAR PMU — Value: ₹2,42,91,255. Start date: September 2024. Duration: 30 months. 4 positions (all staffed). EM: [[people/ved_gupta.md]], PD: [[people/deependra.md]]
 
 ## Open items
-- Deliverables and support for VSK and APAAR.
-
-## Gaps
-- GAP: Detailed implementation schedules.
+- Code generation and invoicing for NCERT projects.
