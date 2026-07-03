@@ -14,7 +14,7 @@ Updated weekly by `skills/weekly-scoreboard.md`. Baselines set at install.
 | BD Proposal Volume / Pipeline | TBD | ₹15.40 Cr (Wins & Near Wins) | | Prospects pipeline listed in brain/tasks.md |
 | Vacant Positions | TBD | 13 | | 106 total roles in Govt PMUs (89 filled) |
 | Client Satisfaction Level | TBD | TBD | | GAP: client feedback metrics |
-| AI Training Wins (Target: 5 Cr) | 0 | ₹50 Lakhs | | Google: ₹40L, ICICI: ₹10L |
+| AI Training Wins (Target: 5 Cr) | 0 | ₹1.62 Crore | | Google: ₹40L, ICICI: ₹10L, UNeXT: ₹1.12 Cr |
 
 ## Founder review packet
 

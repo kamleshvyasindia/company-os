@@ -17,7 +17,7 @@ Deloitte India's Education Practice provides professional consulting and support
   - Staffed: 89
   - Vacant: 13
   - Resigned: 4
-- **90-Day AI Target Status**: ₹50 Lakhs closed (Google University AI: ₹40L, ICICI AI: ₹10L) against the ₹5 Crore target.
+- **90-Day AI Target Status**: ₹1.62 Crore closed (Google University AI: ₹40L, ICICI AI: ₹10L, UNeXT AI: ₹1.12 Cr) against the ₹5 Crore target.
 
 ## 90-day focus
 - **Primary Goal**: Make significant headway in the AI training business and close at least 5 crores INR worth of business for AI training to realize outcomes from current efforts.

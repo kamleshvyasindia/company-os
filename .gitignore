@@ -1,3 +1,5 @@
 .DS_Store
 logs/sessions/*
 !logs/sessions/.gitkeep
+.env
+*.env
