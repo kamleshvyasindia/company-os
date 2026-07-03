@@ -67,6 +67,7 @@ This page contains Kamlesh Vyas's work tasks, pending team actions, and active s
 | 20 | AI for school Leaders | [[people/kamlesh.md]] | ASAP |  |
 | 21 | English Hackathon Punjab | [[people/kamlesh.md]] | ASAP |  |
 | 22 | Haryana Counselling | [[people/meethi.md]] | ASAP |  |
+| 23 | Study AMLI LMS system & pitch Simulation/Content ideas | Harshit | July 20, 2026 | Meeting held on July 2 |
 
 ---
 
