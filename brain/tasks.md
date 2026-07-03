@@ -60,7 +60,7 @@ This page contains Kamlesh Vyas's work tasks, pending team actions, and active s
 | 13 | GSDM WO and deployment | [[people/priyank.md]] | ASAP |  |
 | 14 | DGSE extention and deployment | [[people/bhavisha.md]] | ASAP |  |
 | 15 | IIIT Jammu WO | [[people/kamlesh.md]] | ASAP |  |
-| 16 | MNIT (IIIT Kota) WO and invoice | [[people/kamlesh.md]] | ASAP |  |
+| 16 | MNIT (IIIT Kota) WO and invoice | [[people/kamlesh.md]] | July 15, 2026 | Reminded; they asked to check back by July 15 |
 | 17 | Sachin/ Sid Ashwin- EMeritus | [[people/kamlesh.md]] | ASAP |  |
 | 18 | AMLI | [[people/kamlesh.md]] | ASAP |  |
 | 19 | Jain Univ | [[people/kamlesh.md]] | ASAP |  |
