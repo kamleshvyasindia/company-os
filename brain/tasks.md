@@ -45,29 +45,43 @@ This page contains Kamlesh Vyas's work tasks, pending team actions, and active s
 
 | S.No. | Action Required | Owner | Timeline | Remarks / Status |
 | --- | --- | --- | --- | --- |
-| 1 | Harshit contract and first invoice request and payment | Mansi | ASAP | for May and June |
-| 2 | CL engagement for 2 persons | [[people/rajat.md]] | ASAP |  |
-| 3 | Akhil engagement | Mansi | ASAP |  |
-| 4 | Code generation and invoicing for CAG | [[people/deependra.md]] | ASAP |  |
-| 5 | Code generation and invoicing for Bharat Innovates | [[people/deependra.md]] | ASAP |  |
-| 6 | Deployment, Code generation and invoicing for University Township | [[people/arvind.md]] | ASAP |  |
-| 7 | Deployment, Code generation and invoicing for PMRC | [[people/rajat.md]] | ASAP |  |
-| 8 | Code generation and invoicing for ADB green Jobs (Individual Consultants) | Manish | ASAP |  |
-| 9 | WO and deployment for PMRC | [[people/rajat.md]] | ASAP |  |
-| 10 | Niti closure | Mansi | ASAP |  |
-| 11 | GMR final invloice | [[people/deependra.md]] | ASAP |  |
-| 12 | ICICI invoice | [[people/rajat.md]] | ASAP |  |
-| 13 | GSDM WO and deployment | [[people/priyank.md]] | ASAP |  |
-| 14 | DGSE extention and deployment | [[people/bhavisha.md]] | ASAP |  |
-| 15 | IIIT Jammu WO | [[people/kamlesh.md]] | ASAP |  |
-| 16 | MNIT (IIIT Kota) WO and invoice | [[people/kamlesh.md]] | July 15, 2026 | Reminded; they asked to check back by July 15 |
-| 17 | Sachin/ Sid Ashwin- EMeritus | [[people/kamlesh.md]] | ASAP |  |
-| 18 | AMLI | [[people/kamlesh.md]] | ASAP |  |
-| 19 | Jain Univ | [[people/kamlesh.md]] | ASAP |  |
-| 20 | AI for school Leaders | [[people/kamlesh.md]] | ASAP |  |
-| 21 | English Hackathon Punjab | [[people/kamlesh.md]] | ASAP |  |
-| 22 | Haryana Counselling | [[people/meethi.md]] | ASAP |  |
-| 23 | Study AMLI LMS system & pitch Simulation/Content ideas | Harshit | July 20, 2026 | Meeting held on July 2 |
+| 1 | Harshit contract and first invoice request and payment | Mansi | July 15, 2026 | for May and June |
+| 2 | CL engagement for 2 persons | [[people/rajat.md]] | August 10, 2026 |  |
+| 3 | Akhil engagement | Mansi | August 10, 2026 |  |
+| 4 | Code generation and invoicing for CAG | [[people/deependra.md]] | July 15, 2026 |  |
+| 5 | Code generation and invoicing for Bharat Innovates | [[people/deependra.md]] | July 15, 2026 |  |
+| 6 | Deployment, Code generation and invoicing for University Township | [[people/arvind.md]] | July 15, 2026 |  |
+| 7 | Deployment, Code generation and invoicing for PMRC | [[people/rajat.md]] | August 15, 2026 |  |
+| 8 | Code generation and invoicing for ADB green Jobs (Individual Consultants) | Manish | July 15, 2026 |  |
+| 9 | Niti closure | Mansi | August 10, 2026 |  |
+| 10 | GMR final invoice | [[people/deependra.md]] | August 10, 2026 |  |
+| 11 | ICICI invoice | [[people/rajat.md]] | July 15, 2026 |  |
+| 12 | GSDM WO and deployment | [[people/priyank.md]] | August 10, 2026 |  |
+| 13 | DGSE extention and deployment | [[people/bhavisha.md]] | August 10, 2026 |  |
+| 14 | IIIT Jammu WO | [[people/kamlesh.md]] | July 15, 2026 |  |
+| 15 | MNIT (IIIT Kota) WO and invoice | [[people/kamlesh.md]] | August 10, 2026 | follow up Prof Padhy July 15 |
+| 16 | Sachin/ Sid Ashwin EMeritus | [[people/kamlesh.md]] | August 15, 2026 |  |
+| 17 | AMLI | [[people/kamlesh.md]] | August 15, 2026 | Next follow up on July 20 to study LMS |
+| 18 | Jain Univ | [[people/kamlesh.md]] | July 15, 2026 | Need to send proposal |
+| 19 | AI for school Leaders - CII | [[people/kamlesh.md]] | July 15, 2026 | Need to send outline |
+| 20 | English Hackathon Punjab | [[people/meethi.md]] | August 15, 2026 |  |
+| 21 | Haryana Counselling | [[people/meethi.md]] | August 15, 2026 |  |
+| 22 | Prof Ajay Sharma Gurugram Univ article | Mansi | July 15, 2026 |  |
+| 23 | UPES | Samanvay | August 10, 2026 |  |
+| 24 | Edtech- BMU, Times | [[people/deb.md]] | August 10, 2026 |  |
+| 25 | UNSW | [[people/deb.md]] | August 10, 2026 |  |
+| 26 | ABES | [[people/kamlesh.md]] | August 10, 2026 |  |
+| 27 | Google workshops and overall agreement | [[people/kamlesh.md]] | July 15, 2026 |  |
+| 28 | SGT | [[people/kamlesh.md]] | August 10, 2026 |  |
+| 29 | Army workshop | [[people/kamlesh.md]] | August 10, 2026 |  |
+| 30 | Amity- south Africa, studies, AI workshop, Maldives | [[people/kamlesh.md]] | August 10, 2026 |  |
+| 31 | Renew | [[people/kamlesh.md]] | August 10, 2026 |  |
+| 32 | Karnataka Higher Ed | [[people/priyank.md]] | August 10, 2026 |  |
+| 33 | MP Higher Ed | [[people/deependra.md]] | August 10, 2026 |  |
+| 34 | UP AI | [[people/arvind.md]] | July 15, 2026 |  |
+| 35 | VBU | [[people/kamlesh.md]] | August 10, 2026 |  |
+| 36 | UP Hiring | [[people/arvind.md]] | August 10, 2026 |  |
+| 37 | Study AMLI LMS system & pitch Simulation/Content ideas | Harshit | July 20, 2026 | Meeting held on July 2 (Retained old task) |
 
 ---
 

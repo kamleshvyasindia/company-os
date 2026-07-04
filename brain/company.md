@@ -8,10 +8,10 @@ Deloitte India's Education Practice provides professional consulting and support
 ## Stage & numbers that matter
 - **Team Size**: ~125 members based across Delhi, Punjab, Gujarat, UP, and Bangalore.
 - **Revenue Mix**: Currently ~90% government services based, with a strategic transition to private sector/AI training services (~10%).
-- **Active Engagements**: 24 active projects (19 government PMU/policy contracts + 5 private sector / AI training projects).
+- **Active Engagements**: 25 active projects (20 government PMU/policy contracts + 5 private sector / AI training projects).
 - **Monthly Revenue Metrics**:
   - Max Value per month: ₹2.83 Crore (Government PMUs) + ₹50.8 Lakh (Private/AI).
-  - Current Net Sales Rate (NSR) per month: ₹2.20 Crore (Government PMUs) + ₹50.8 Lakh (Private/AI).
+  - Current Net Sales Rate (NSR) per month: ₹2.20 Crore (Government PMUs) + ₹50.8 Lakh (Private/AI) [Increases by ₹7 Lakhs/month from Aug 1 with GSBTM PMU].
 - **Hiring & Deploys (Government PMUs)**:
   - Total Positions: 106
   - Staffed: 89
