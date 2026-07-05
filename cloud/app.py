@@ -2,6 +2,7 @@ import json
 import os
 import urllib.request
 import urllib.parse
+import urllib.error
 from fastapi import FastAPI, Request, BackgroundTasks
 from fastapi.responses import PlainTextResponse, JSONResponse
 
@@ -83,6 +84,9 @@ def call_gemini_rest(context, query):
                             text_res = parts[0].get("text", "").strip()
                             print(f"Success using REST API {ver} with model {model}!")
                             return text_res
+            except urllib.error.HTTPError as he:
+                error_body = he.read().decode("utf-8")
+                print(f"REST API {ver}/{model} failed with HTTPError: {he.code} - {error_body}")
             except Exception as e:
                 print(f"REST API {ver}/{model} failed: {e}")
                 
