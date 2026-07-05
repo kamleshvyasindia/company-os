@@ -8,7 +8,7 @@ import google.generativeai as genai
 
 app = FastAPI()
 
-# Load env variables (for local debug or cloud platforms)
+# Load env variables
 SLACK_BOT_TOKEN = os.environ.get("SLACK_BOT_TOKEN")
 GITHUB_PAT = os.environ.get("GITHUB_PAT")
 GEMINI_API_KEY = os.environ.get("GEMINI_API_KEY")
@@ -17,6 +17,14 @@ GITHUB_REPO = os.environ.get("GITHUB_REPO", "kamleshvyasindia/company-os")
 # Configure Gemini
 if GEMINI_API_KEY:
     genai.configure(api_key=GEMINI_API_KEY)
+    try:
+        print("--- AVAILABLE MODELS FOR THIS API KEY ---")
+        for m in genai.list_models():
+            if 'generateContent' in m.supported_generation_methods:
+                print(f"Available Model: {m.name}")
+        print("-----------------------------------------")
+    except Exception as e:
+        print(f"Failed to list models on startup: {e}")
 
 def post_slack_message(channel, text):
     url = "https://slack.com/api/chat.postMessage"
@@ -81,13 +89,25 @@ SYSTEM CONTEXT:
 
 Provide a clear, professional, and concise response. Format the response with Slack markdown (*bold*, _italics_, bullet points). Cite filenames if relevant.
 """
-    try:
-        model = genai.GenerativeModel("gemini-1.5-flash")
-        response = model.generate_content([context, f"User Question: {user_text}"])
-        answer = response.text.strip()
-    except Exception as e:
-        print(f"Gemini API inference error: {e}")
-        answer = "⚠️ Sorry, I encountered an error while processing your request. Please check if my Gemini API key is configured correctly."
+    
+    answer = None
+    
+    # Try different model names in sequence in case of API version/model availability shifts
+    candidate_models = ["gemini-1.5-flash", "gemini-1.5-flash-latest", "gemini-1.5-pro", "gemini-pro"]
+    
+    for model_name in candidate_models:
+        try:
+            print(f"Attempting inference with model: {model_name}...")
+            model = genai.GenerativeModel(model_name)
+            response = model.generate_content([context, f"User Question: {user_text}"])
+            answer = response.text.strip()
+            print(f"Success with model: {model_name}!")
+            break
+        except Exception as e:
+            print(f"Model {model_name} failed: {e}")
+            
+    if not answer:
+        answer = "⚠️ Sorry, I encountered an error while processing your request. Please check your Render logs or Gemini API studio project settings to ensure the Generative Language API is enabled."
         
     post_slack_message(channel, answer)
 
