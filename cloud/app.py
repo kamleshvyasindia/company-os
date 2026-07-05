@@ -50,7 +50,6 @@ def fetch_github_file(filepath):
         return f"Error: Could not retrieve {filepath}."
 
 def get_available_models():
-    # Call ListModels to see what models this key can access
     url = f"https://generativelanguage.googleapis.com/v1/models?key={GEMINI_API_KEY}"
     try:
         req = urllib.request.Request(url, method="GET")
@@ -69,7 +68,8 @@ def call_gemini_rest(context, query):
     prompt = f"{context}\n\nUser Question: {query}"
     
     api_versions = ["v1", "v1beta"]
-    models = ["gemini-1.5-flash", "gemini-pro"]
+    # Updated models list to match the modern Gemini models authorized for the user's key
+    models = ["gemini-2.5-flash", "gemini-2.0-flash", "gemini-3.5-flash", "gemini-1.5-flash"]
     
     for ver in api_versions:
         for model in models:
@@ -139,7 +139,6 @@ Provide a clear, professional, and concise response. Format the response with Sl
     answer = call_gemini_rest(context, user_text)
     
     if not answer:
-        # If it fails, report the ListModels diagnostics directly to Slack to see why
         diagnostics = get_available_models()
         answer = f"⚠️ Gemini inference failed.\n\n*Diagnostics Output:*\n`{diagnostics}`"
         
