@@ -4,7 +4,6 @@ import urllib.request
 import urllib.parse
 from fastapi import FastAPI, Request, BackgroundTasks
 from fastapi.responses import PlainTextResponse, JSONResponse
-import google.generativeai as genai
 
 app = FastAPI()
 
@@ -13,18 +12,6 @@ SLACK_BOT_TOKEN = os.environ.get("SLACK_BOT_TOKEN")
 GITHUB_PAT = os.environ.get("GITHUB_PAT")
 GEMINI_API_KEY = os.environ.get("GEMINI_API_KEY")
 GITHUB_REPO = os.environ.get("GITHUB_REPO", "kamleshvyasindia/company-os")
-
-# Configure Gemini
-if GEMINI_API_KEY:
-    genai.configure(api_key=GEMINI_API_KEY)
-    try:
-        print("--- AVAILABLE MODELS FOR THIS API KEY ---")
-        for m in genai.list_models():
-            if 'generateContent' in m.supported_generation_methods:
-                print(f"Available Model: {m.name}")
-        print("-----------------------------------------")
-    except Exception as e:
-        print(f"Failed to list models on startup: {e}")
 
 def post_slack_message(channel, text):
     url = "https://slack.com/api/chat.postMessage"
@@ -61,6 +48,46 @@ def fetch_github_file(filepath):
         print(f"Failed to fetch {filepath} from GitHub: {e}")
         return f"Error: Could not retrieve {filepath}."
 
+def call_gemini_rest(context, query):
+    prompt = f"{context}\n\nUser Question: {query}"
+    
+    # Try the new v1 stable endpoint (required for AQ. keys), then fall back to v1beta
+    api_versions = ["v1", "v1beta"]
+    models = ["gemini-1.5-flash", "gemini-pro"]
+    
+    for ver in api_versions:
+        for model in models:
+            url = f"https://generativelanguage.googleapis.com/{ver}/models/{model}:generateContent?key={GEMINI_API_KEY}"
+            headers = {"Content-Type": "application/json"}
+            payload = {
+                "contents": [
+                    {
+                        "parts": [
+                            {
+                                "text": prompt
+                            }
+                        ]
+                    }
+                ]
+            }
+            data = json.dumps(payload).encode("utf-8")
+            req = urllib.request.Request(url, data=data, headers=headers, method="POST")
+            try:
+                print(f"Attempting REST API {ver} with model {model}...")
+                with urllib.request.urlopen(req) as response:
+                    res_data = json.loads(response.read().decode("utf-8"))
+                    candidates = res_data.get("candidates", [])
+                    if candidates:
+                        parts = candidates[0].get("content", {}).get("parts", [])
+                        if parts:
+                            text_res = parts[0].get("text", "").strip()
+                            print(f"Success using REST API {ver} with model {model}!")
+                            return text_res
+            except Exception as e:
+                print(f"REST API {ver}/{model} failed: {e}")
+                
+    return None
+
 def process_query_async(channel, user_text):
     # Fetch key brain context files
     company_context = fetch_github_file("brain/company.md")
@@ -90,22 +117,8 @@ SYSTEM CONTEXT:
 Provide a clear, professional, and concise response. Format the response with Slack markdown (*bold*, _italics_, bullet points). Cite filenames if relevant.
 """
     
-    answer = None
+    answer = call_gemini_rest(context, user_text)
     
-    # Try different model names in sequence in case of API version/model availability shifts
-    candidate_models = ["gemini-1.5-flash", "gemini-1.5-flash-latest", "gemini-1.5-pro", "gemini-pro"]
-    
-    for model_name in candidate_models:
-        try:
-            print(f"Attempting inference with model: {model_name}...")
-            model = genai.GenerativeModel(model_name)
-            response = model.generate_content([context, f"User Question: {user_text}"])
-            answer = response.text.strip()
-            print(f"Success with model: {model_name}!")
-            break
-        except Exception as e:
-            print(f"Model {model_name} failed: {e}")
-            
     if not answer:
         answer = "⚠️ Sorry, I encountered an error while processing your request. Please check your Render logs or Gemini API studio project settings to ensure the Generative Language API is enabled."
         
