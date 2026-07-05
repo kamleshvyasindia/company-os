@@ -49,10 +49,25 @@ def fetch_github_file(filepath):
         print(f"Failed to fetch {filepath} from GitHub: {e}")
         return f"Error: Could not retrieve {filepath}."
 
+def get_available_models():
+    # Call ListModels to see what models this key can access
+    url = f"https://generativelanguage.googleapis.com/v1/models?key={GEMINI_API_KEY}"
+    try:
+        req = urllib.request.Request(url, method="GET")
+        with urllib.request.urlopen(req) as response:
+            res_data = json.loads(response.read().decode("utf-8"))
+            models = res_data.get("models", [])
+            model_names = [m.get("name") for m in models]
+            return f"Authorized Models: {', '.join(model_names)}"
+    except urllib.error.HTTPError as he:
+        error_body = he.read().decode("utf-8")
+        return f"ListModels failed: {he.code} - {error_body}"
+    except Exception as e:
+        return f"ListModels error: {e}"
+
 def call_gemini_rest(context, query):
     prompt = f"{context}\n\nUser Question: {query}"
     
-    # Try the new v1 stable endpoint (required for AQ. keys), then fall back to v1beta
     api_versions = ["v1", "v1beta"]
     models = ["gemini-1.5-flash", "gemini-pro"]
     
@@ -124,7 +139,9 @@ Provide a clear, professional, and concise response. Format the response with Sl
     answer = call_gemini_rest(context, user_text)
     
     if not answer:
-        answer = "⚠️ Sorry, I encountered an error while processing your request. Please check your Render logs or Gemini API studio project settings to ensure the Generative Language API is enabled."
+        # If it fails, report the ListModels diagnostics directly to Slack to see why
+        diagnostics = get_available_models()
+        answer = f"⚠️ Gemini inference failed.\n\n*Diagnostics Output:*\n`{diagnostics}`"
         
     post_slack_message(channel, answer)
 
