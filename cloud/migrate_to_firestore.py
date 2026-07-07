@@ -123,32 +123,56 @@ def run_migration():
     projects = parse_markdown_table(projects_path)
     count = 0
     for proj in projects:
-        # Skip empty rows or header placeholders
-        wbs = proj.get("WBS Code", "").strip()
-        if not wbs or "WBS" in wbs or "wbs" in wbs:
-            continue
+        # Check if it is Table 1 (Government PMU Projects)
+        if "WBS Code" in proj:
+            wbs = proj.get("WBS Code", "").strip()
+            if not wbs or "WBS" in wbs or "wbs" in wbs:
+                continue
+                
+            proj_name = proj.get("Project Name", "").strip()
+            if not proj_name:
+                continue
+                
+            doc_id = wbs.replace("/", "_").replace("-", "_").lower()
+            if not doc_id or doc_id == "code_awaited":
+                doc_id = f"awaited_{count}"
+                
+            db.collection("projects").document(doc_id).set({
+                "wbs": wbs,
+                "name": proj_name,
+                "client": proj.get("Client", "").strip(),
+                "director": clean_wiki_links(proj.get("Project Director (PD)", "")),
+                "manager": clean_wiki_links(proj.get("Engagement Manager (EM)", "")),
+                "value": proj.get("Value (INR)", "").strip(),
+                "monthlyMax": proj.get("Monthly Max (INR)", "").strip(),
+                "staffing": proj.get("Deployed / Vacant / Resigned", "").strip(),
+                "status": proj.get("Status / Notes", "").strip(),
+                "type": "government",
+                "updatedAt": firestore.SERVER_TIMESTAMP
+            })
+            count += 1
             
-        proj_name = proj.get("Project Name", "").strip()
-        if not proj_name:
-            continue
+        # Check if it is Table 2 (Private Sector & AI Training Projects)
+        elif "Project Manager" in proj:
+            proj_name = proj.get("Project Name", "").strip()
+            if not proj_name or "Project Name" in proj_name:
+                continue
+                
+            doc_id = f"private_{proj_name.replace(' ', '_').replace('-', '_').lower()}"
+            db.collection("projects").document(doc_id).set({
+                "name": proj_name,
+                "client": proj.get("Client", "").strip(),
+                "manager": clean_wiki_links(proj.get("Project Manager", "")),
+                "value": proj.get("Value (INR)", "").strip(),
+                "monthlyMax": proj.get("Monthly Max (INR)", "").strip(),
+                "deployed": proj.get("Deployed", "").strip(),
+                "duration": proj.get("Duration / Timeline", "").strip(),
+                "status": proj.get("Status", "").strip(),
+                "type": "private",
+                "updatedAt": firestore.SERVER_TIMESTAMP
+            })
+            count += 1
             
-        doc_id = wbs.replace("/", "_").replace("-", "_").lower()
-        if not doc_id or doc_id == "code_awaited":
-            doc_id = f"awaited_{count}"
-            
-        db.collection("projects").document(doc_id).set({
-            "wbs": wbs,
-            "name": proj_name,
-            "client": proj.get("Client", "").strip(),
-            "director": clean_wiki_links(proj.get("Project Director (PD)", "")),
-            "manager": clean_wiki_links(proj.get("Engagement Manager (EM)", "")),
-            "value": proj.get("Value (INR)", "").strip(),
-            "monthlyMax": proj.get("Monthly Max (INR)", "").strip(),
-            "staffing": proj.get("Deployed / Vacant / Resigned", "").strip(),
-            "status": proj.get("Status / Notes", "").strip(),
-            "updatedAt": firestore.SERVER_TIMESTAMP
-        })
-        count += 1
     print(f"Uploaded {count} project documents to Firestore.")
 
     # 4. Migrate Tasks, Team Actions, and Sales Pipelines
@@ -177,33 +201,34 @@ def run_migration():
             task_count += 1
             
         # Check if it is Table 2 (Pending Team Actions)
-        elif "Action Item" in r:
-            action = r.get("Action Item", "").strip()
+        elif "Action Required" in r:
+            action = r.get("Action Required", "").strip()
             if not action or "Action" in action:
                 continue
             doc_id = f"action_{action_count}"
             db.collection("team_actions").document(doc_id).set({
-                "wbs": r.get("WBS Code", "").strip(),
+                "sno": r.get("S.No.", "").strip(),
                 "action": action,
                 "owner": clean_wiki_links(r.get("Owner", "")),
-                "targetDate": r.get("Target Date", "").strip(),
-                "status": r.get("Status / Notes", "").strip(),
+                "targetDate": r.get("Timeline", "").strip(),
+                "status": r.get("Remarks / Status", "").strip(),
                 "updatedAt": firestore.SERVER_TIMESTAMP
             })
             action_count += 1
             
         # Check if it is Table 3 (Active Sales Pipeline)
-        elif "Opportunity / Scope" in r:
-            opp = r.get("Opportunity / Scope", "").strip()
+        elif "Opportunity Name" in r:
+            opp = r.get("Opportunity Name", "").strip()
             if not opp or "Opportunity" in opp:
                 continue
             doc_id = f"pipeline_{pipeline_count}"
             db.collection("pipeline").document(doc_id).set({
-                "client": r.get("Client / Lead", "").strip(),
                 "opportunity": opp,
-                "value": r.get("Value", "").strip(),
-                "status": r.get("Status / Probability", "").strip(),
-                "nextSteps": r.get("Next Steps / Lead", "").strip(),
+                "status": r.get("Sales Stage", "").strip(),
+                "owner": clean_wiki_links(r.get("Target Owner", "")),
+                "value": r.get("Estimated Value (Lakhs)", "").strip(),
+                "jupiterId": r.get("Jupiter ID", "").strip(),
+                "notes": r.get("Notes", "").strip(),
                 "updatedAt": firestore.SERVER_TIMESTAMP
             })
             pipeline_count += 1

@@ -8,6 +8,8 @@ import csv
 import sys
 from fastapi import FastAPI, Request, BackgroundTasks
 from fastapi.responses import PlainTextResponse, JSONResponse
+import firebase_admin
+from firebase_admin import credentials, firestore
 
 app = FastAPI()
 
@@ -21,6 +23,27 @@ SLACK_BOT_TOKEN = os.environ.get("SLACK_BOT_TOKEN")
 GITHUB_PAT = os.environ.get("GITHUB_PAT")
 GEMINI_API_KEY = os.environ.get("GEMINI_API_KEY")
 GITHUB_REPO = os.environ.get("GITHUB_REPO", "kamleshvyasindia/company-os")
+
+# Initialize Firebase Admin
+db = None
+try:
+    firebase_key = os.environ.get("FIREBASE_SERVICE_ACCOUNT_KEY")
+    if firebase_key:
+        cred_dict = json.loads(firebase_key)
+        cred = credentials.Certificate(cred_dict)
+        firebase_admin.initialize_app(cred)
+        db = firestore.client()
+        print("Firebase initialized in app.py using env variable.")
+    else:
+        # Check local folder
+        key_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), "firebase-key.json")
+        if os.path.exists(key_path):
+            cred = credentials.Certificate(key_path)
+            firebase_admin.initialize_app(cred)
+            db = firestore.client()
+            print("Firebase initialized in app.py using local key file.")
+except Exception as e:
+    print(f"Failed to initialize Firebase Admin: {e}")
 
 def post_slack_message(channel, text):
     url = "https://slack.com/api/chat.postMessage"
@@ -43,7 +66,8 @@ def post_slack_message(channel, text):
         print(f"Failed to post message to Slack: {e}")
 
 def fetch_github_file(filepath):
-    url = f"https://api.github.com/repos/{GITHUB_REPO}/contents/{filepath}"
+    quoted_path = urllib.parse.quote(filepath)
+    url = f"https://api.github.com/repos/{GITHUB_REPO}/contents/{quoted_path}"
     headers = {
         "Authorization": f"token {GITHUB_PAT}",
         "Accept": "application/vnd.github.v3.raw",
@@ -58,7 +82,8 @@ def fetch_github_file(filepath):
         return f"Error: Could not retrieve {filepath}."
 
 def push_to_github(filepath, content, commit_message):
-    url = f"https://api.github.com/repos/{GITHUB_REPO}/contents/{filepath}"
+    quoted_path = urllib.parse.quote(filepath)
+    url = f"https://api.github.com/repos/{GITHUB_REPO}/contents/{quoted_path}"
     headers = {
         "Authorization": f"token {GITHUB_PAT}",
         "Accept": "application/json",
@@ -247,7 +272,26 @@ def execute_add_task(channel, user_text):
     push_to_github("brain/tasks.md", updated_tasks_md, "Regenerate tasks.md via Slack")
     push_to_github("dashboard.html", updated_dashboard_html, "Regenerate dashboard.html via Slack")
     
-    success_msg = f"✅ *Task Added Successfully!*\n• *S.No:* {next_sno}\n• *Action:* {parsed.get('action')}\n• *Who:* {parsed.get('who')}\n• *When:* {parsed.get('when')}\n• *Remarks:* {parsed.get('remarks') or '—'}\n\n_GitHub repository and Web Dashboard have been updated!_"
+    # Sync new task to Firestore
+    if db:
+        try:
+            actions_ref = db.collection("team_actions")
+            action_docs = actions_ref.get()
+            doc_id = f"action_{len(action_docs)}"
+            owner_clean = parsed.get("who", "").strip().lower().replace(".md", "").replace("people/", "")
+            actions_ref.document(doc_id).set({
+                "sno": next_sno,
+                "action": parsed.get("action"),
+                "owner": owner_clean,
+                "targetDate": parsed.get("when", "ASAP"),
+                "status": parsed.get("remarks", ""),
+                "updatedAt": firestore.SERVER_TIMESTAMP
+            })
+            print(f"Synced task to Firestore document {doc_id}")
+        except Exception as e:
+            print(f"Failed to sync task to Firestore: {e}")
+            
+    success_msg = f"✅ *Task Added Successfully!*\n• *S.No:* {next_sno}\n• *Action:* {parsed.get('action')}\n• *Who:* {parsed.get('who')}\n• *When:* {parsed.get('when')}\n• *Remarks:* {parsed.get('remarks') or '—'}\n\n_GitHub repository, Firestore DB, and Web Dashboard have been updated!_"
     post_slack_message(channel, success_msg)
 
 def execute_add_win(channel, user_text):
@@ -352,15 +396,128 @@ def execute_add_win(channel, user_text):
             sf.write(new_sb_content)
         push_to_github("scoreboard.md", new_sb_content, "Update scoreboard metrics via Slack")
         
-    success_msg = f"🏆 *New Project Win Added Successfully!*\n• *Opportunity:* {parsed.get('name')}\n• *Total Value:* ₹{parsed.get('amount')} L\n• *PM:* {parsed.get('pm')}\n• *Start Date:* {parsed.get('start')}\n• *New Pipeline Total:* ₹{total_val/100:.3f} Crore\n\n_GitHub repository, Scoreboard, and Web Dashboard have been updated!_"
+        # Sync scoreboard to Firestore
+        if db:
+            try:
+                db.collection("metadata").document("scoreboard").set({
+                    "content": new_sb_content,
+                    "updatedAt": firestore.SERVER_TIMESTAMP
+                })
+                print("Synced scoreboard to Firestore.")
+            except Exception as e:
+                print(f"Failed to sync scoreboard to Firestore: {e}")
+        
+    success_msg = f"🏆 *New Project Win Added Successfully!*\n• *Opportunity:* {parsed.get('name')}\n• *Total Value:* ₹{parsed.get('amount')} L\n• *PM:* {parsed.get('pm')}\n• *Start Date:* {parsed.get('start')}\n• *New Pipeline Total:* ₹{total_val/100:.3f} Crore\n\n_GitHub repository, Scoreboard, Firestore DB, and Web Dashboard have been updated!_"
     post_slack_message(channel, success_msg)
+
+def get_company_context():
+    if db:
+        try:
+            doc = db.collection("metadata").document("company").get()
+            if doc.exists:
+                return doc.to_dict().get("content", "")
+        except Exception as e:
+            print(f"Firestore get_company_context error: {e}")
+    return fetch_github_file("brain/company.md")
+
+def get_scoreboard_context():
+    if db:
+        try:
+            doc = db.collection("metadata").document("scoreboard").get()
+            if doc.exists:
+                return doc.to_dict().get("content", "")
+        except Exception as e:
+            print(f"Firestore get_scoreboard_context error: {e}")
+    return fetch_github_file("scoreboard.md")
+
+def get_projects_context():
+    if db:
+        try:
+            docs = db.collection("projects").stream()
+            gov_lines = [
+                "| WBS Code | Project Name | Client | Project Director (PD) | Engagement Manager (EM) | Value (INR) | Monthly Max (INR) | Deployed / Vacant / Resigned | Status / Notes |",
+                "| --- | --- | --- | --- | --- | --- | --- | --- | --- |"
+            ]
+            priv_lines = [
+                "| Project Name | Client | Project Manager | Value (INR) | Monthly Max (INR) | Deployed | Duration / Timeline | Status |",
+                "| --- | --- | --- | --- | --- | --- | --- | --- |"
+            ]
+            
+            for doc in docs:
+                d = doc.to_dict()
+                ptype = d.get("type", "government")
+                if ptype == "government":
+                    gov_lines.append(f"| `{d.get('wbs','')}` | {d.get('name','')} | {d.get('client','')} | [[people/{d.get('director','')}.md]] | [[people/{d.get('manager','')}.md]] | {d.get('value','')} | {d.get('monthlyMax','')} | {d.get('staffing','')} | {d.get('status','')} |")
+                else:
+                    mgr = d.get('manager','')
+                    mgr_link = f"[[people/{mgr}.md]]" if mgr else ""
+                    priv_lines.append(f"| {d.get('name','')} | {d.get('client','')} | {mgr_link} | {d.get('value','')} | {d.get('monthlyMax','')} | {d.get('deployed','')} | {d.get('duration','')} | {d.get('status','')} |")
+            
+            return "# Active Projects Directory\n\nThis directory lists all active education and skills engagements across government and private sector clients.\n\n---\n\n## Government PMU Projects\n\n" + "\n".join(gov_lines) + "\n\n---\n\n## Private Sector & AI Training Projects\n\n" + "\n".join(priv_lines)
+        except Exception as e:
+            print(f"Firestore get_projects_context error: {e}")
+    return fetch_github_file("brain/projects.md")
+
+def get_tasks_context():
+    if db:
+        try:
+            tasks = db.collection("tasks").stream()
+            actions = db.collection("team_actions").stream()
+            pipeline = db.collection("pipeline").stream()
+            
+            tasks_lines = [
+                "| Date | Event / Meeting | Status | Remarks |",
+                "| --- | --- | --- | --- |"
+            ]
+            action_lines = [
+                "| S.No. | Action Required | Owner | Timeline | Remarks / Status |",
+                "| --- | --- | --- | --- | --- |"
+            ]
+            pipeline_lines = [
+                "| Opportunity Name | Sales Stage | Target Owner | Estimated Value (Lakhs) | Jupiter ID | Notes |",
+                "| --- | --- | --- | --- | --- | --- |"
+            ]
+            
+            tasks_list = []
+            for doc in tasks:
+                d = doc.to_dict()
+                tasks_list.append(d)
+            for d in tasks_list:
+                tasks_lines.append(f"| {d.get('date','')} | {d.get('event','')} | {d.get('status','')} | {d.get('remarks','')} |")
+                
+            actions_list = []
+            for doc in actions:
+                d = doc.to_dict()
+                actions_list.append(d)
+            try:
+                actions_list.sort(key=lambda x: int(x.get("sno", "999")))
+            except Exception:
+                pass
+            for d in actions_list:
+                owner = d.get('owner','')
+                owner_link = f"[[people/{owner}.md]]" if owner else ""
+                action_lines.append(f"| {d.get('sno','')} | {d.get('action','')} | {owner_link} | {d.get('targetDate','')} | {d.get('status','')} |")
+                
+            pipeline_list = []
+            for doc in pipeline:
+                d = doc.to_dict()
+                pipeline_list.append(d)
+            for d in pipeline_list:
+                owner = d.get('owner','')
+                owner_link = f"[[people/{owner}.md]]" if owner else ""
+                pipeline_lines.append(f"| {d.get('opportunity','')} | {d.get('status','')} | {owner_link} | {d.get('value','')} | {d.get('jupiterId','')} | {d.get('notes','')} |")
+                
+            return "# Central Task & Pipeline Board\n\nThis page contains Kamlesh Vyas's work tasks, pending team actions, and active sales pipelines.\n\n---\n\n## 1. Kamlesh Vyas Work Tasks (July 2026)\n\n" + "\n".join(tasks_lines) + "\n\n---\n\n## 2. Pending Actions for the Team\n\n" + "\n".join(action_lines) + "\n\n---\n\n## 3. Pipeline Prospects & Leads\n\n" + "\n".join(pipeline_lines)
+        except Exception as e:
+            print(f"Firestore get_tasks_context error: {e}")
+    return fetch_github_file("brain/tasks.md")
 
 def execute_query(channel, user_text):
     # Fetch key brain context files
-    company_context = fetch_github_file("brain/company.md")
-    projects_context = fetch_github_file("brain/projects.md")
-    tasks_context = fetch_github_file("brain/tasks.md")
-    scoreboard_context = fetch_github_file("scoreboard.md")
+    company_context = get_company_context()
+    projects_context = get_projects_context()
+    tasks_context = get_tasks_context()
+    scoreboard_context = get_scoreboard_context()
     
     context = f"""
 You are the Deloitte India Education Practice Assistant. Use the following context about the company, active projects, tasks, and metrics to answer the user's question accurately.
