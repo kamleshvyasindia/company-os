@@ -3,3 +3,5 @@ logs/sessions/*
 !logs/sessions/.gitkeep
 .env
 *.env
+*key.json
+firebase-key.json
