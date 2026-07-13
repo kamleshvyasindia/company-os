@@ -83,6 +83,7 @@ This page contains Kamlesh Vyas's work tasks, pending team actions, and active s
 | 36 | UP Hiring | [[people/arvind.md]] | August 10, 2026 |  |
 | 37 | Study AMLI LMS system & pitch Simulation/Content ideas | Harshit | July 20, 2026 | Meeting held on July 2 (Retained old task) |
 | 38 | hello from render | [[people/kamlesh.md]] | July 15, 2024 |  |
+| 39 | Confirm to IIT Delhi for July 15 training |  | ASAP |  |
 
 ---
 
