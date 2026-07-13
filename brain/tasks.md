@@ -24,9 +24,9 @@ This page contains Kamlesh Vyas's work tasks, pending team actions, and active s
 | Jul-06 | NIIT Audit proposal 12: 30 PM | ⏳ Pending |  |
 | Jul-07 | Symbisis Institute of Management khargi, 9 am | ⏳ Pending |  |
 | Jul-07 | Symbisis Skills and professional University, Pune, 2 pm | ⏳ Pending |  |
-| Jul-08 | NMIMS 10 AM | ⏳ Pending |  |
+| Jul-08 | NMIMS 10 AM | ✅ Done |  |
 | Jul-08 | JIO 3:30 PM | ⏳ Pending |  |
-| Jul-09 | GCC meeting Delhi | ⏳ Pending |  |
+| Jul-09 | GCC meeting Delhi | ✅ Done |  |
 | Jul-09 | ASSOCHAM | ⏳ Pending |  |
 |  | Harshit pay invoice 1 | ⏳ Pending |  |
 |  | Harshit apps- Edtech life cycle, Univ ERP, Univ Excel, School RFP. FLN | ⏳ Pending |  |
