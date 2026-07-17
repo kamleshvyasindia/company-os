@@ -20,23 +20,23 @@ This page contains Kamlesh Vyas's work tasks, pending team actions, and active s
 | Jul-02 | PDC 9:30- 12:30 | ✅ Done |  |
 | Jul-02 | 3 PM AMLI meeting | ✅ Done |  |
 | Jul-03 | GCC CII? | ✅ Done |  |
-| Jul-06 | Flame Univ 9 AM | ⏳ Pending |  |
-| Jul-06 | NIIT Audit proposal 12: 30 PM | ⏳ Pending |  |
-| Jul-07 | Symbisis Institute of Management khargi, 9 am | ⏳ Pending |  |
-| Jul-07 | Symbisis Skills and professional University, Pune, 2 pm | ⏳ Pending |  |
+| Jul-06 | Flame Univ 9 AM | ✅ Done |  |
+| Jul-06 | NIIT Audit proposal 12: 30 PM | ✅ Done |  |
+| Jul-07 | Symbiosis Institute of Management Khadki, 9 AM | ✅ Done |  |
+| Jul-07 | Symbiosis Skills & Professional University, Pune, 2 PM | ✅ Done |  |
 | Jul-08 | NMIMS 10 AM | ✅ Done |  |
-| Jul-08 | JIO 3:30 PM | ⏳ Pending |  |
+| Jul-08 | Jio 3:30 PM | ✅ Done |  |
 | Jul-09 | GCC meeting Delhi | ✅ Done |  |
 | Jul-09 | ASSOCHAM | ⏳ Pending |  |
 |  | Harshit pay invoice 1 | ⏳ Pending |  |
 |  | Harshit apps- Edtech life cycle, Univ ERP, Univ Excel, School RFP. FLN | ⏳ Pending |  |
 |  | Niti Aayog | ⏳ Pending |  |
-| Jul-10 | 9:30 Dr KV Raju | ⏳ Pending |  |
+| Jul-10 | 9:30 Dr. KV Raju | ✅ Done |  |
 |  | Ajay sharma article | ⏳ Pending |  |
-| Jul-10 | 2 PM SRM Ghaziabad | ⏳ Pending |  |
+| Jul-10 | 2 PM SRM Ghaziabad | ✅ Done |  |
 |  | Rishikesh Krishnan | ⏳ Pending |  |
 |  | Secretary Giri Punjab WB | ⏳ Pending |  |
-|  | IITD | ⏳ Pending |  |
+|  | IITD | ✅ Done |  |
 |  | Partner Skills Hiring | ⏳ Pending |  |
 
 ---
@@ -45,23 +45,23 @@ This page contains Kamlesh Vyas's work tasks, pending team actions, and active s
 
 | S.No. | Action Required | Owner | Timeline | Remarks / Status |
 | --- | --- | --- | --- | --- |
-| 1 | Harshit contract and first invoice request and payment | Mansi | July 15, 2026 | for May and June |
+| 1 | Harshit contract and first invoice request and payment | Mansi | July 15, 2026 | First Invoice under processing |
 | 2 | CL engagement for 2 persons | [[people/rajat.md]] | August 10, 2026 |  |
-| 3 | Akhil engagement | Mansi | August 10, 2026 |  |
-| 4 | Code generation and invoicing for CAG | [[people/deependra.md]] | July 15, 2026 |  |
-| 5 | Code generation and invoicing for Bharat Innovates | [[people/deependra.md]] | July 15, 2026 |  |
-| 6 | Deployment, Code generation and invoicing for University Township | [[people/arvind.md]] | July 15, 2026 |  |
-| 7 | Deployment, Code generation and invoicing for PMRC | [[people/rajat.md]] | August 15, 2026 |  |
+| 3 | Akhil engagement | Mansi | August 10, 2026 | Under QRM Review |
+| 4 | Code generation and invoicing for CAG | [[people/deependra.md]] | July 15, 2026 | Code Generated- first Invoice Due |
+| 5 | Code generation and invoicing for Bharat Innovates | [[people/deependra.md]] | July 15, 2026 | Code Generated-  Invoice Due |
+| 6 | Deployment, Code generation and invoicing for University Township | [[people/arvind.md]] | July 15, 2026 | DRMS under progress |
+| 7 | Deployment, Code generation and invoicing for PMRC | [[people/rajat.md]] | August 15, 2026 | DRMS under progress |
 | 8 | Code generation and invoicing for ADB green Jobs (Individual Consultants) | Manish | July 15, 2026 |  |
 | 9 | Niti closure | Mansi | August 10, 2026 |  |
-| 10 | GMR final invoice | [[people/deependra.md]] | August 10, 2026 |  |
-| 11 | ICICI invoice | [[people/rajat.md]] | July 15, 2026 |  |
+| 10 | GMR final invoice | [[people/deependra.md]] | August 10, 2026 | Invoice to be generated |
+| 11 | ICICI invoice | [[people/rajat.md]] | July 15, 2026 | Invoice to be generated |
 | 12 | GSDM WO and deployment | [[people/priyank.md]] | August 10, 2026 |  |
 | 13 | DGSE extention and deployment | [[people/bhavisha.md]] | August 10, 2026 |  |
 | 14 | IIIT Jammu WO | [[people/kamlesh.md]] | July 15, 2026 |  |
 | 15 | MNIT (IIIT Kota) WO and invoice | [[people/kamlesh.md]] | August 10, 2026 | follow up Prof Padhy July 15 |
 | 16 | Sachin/ Sid Ashwin EMeritus | [[people/kamlesh.md]] | August 15, 2026 |  |
-| 17 | AMLI | [[people/kamlesh.md]] | August 15, 2026 | Next follow up on July 20 to study LMS |
+| 17 | AMLI | [[people/kamlesh.md]] | August 15, 2026 | Need to study LMS |
 | 18 | Jain Univ | [[people/kamlesh.md]] | July 15, 2026 | Need to send proposal |
 | 19 | AI for school Leaders - CII | [[people/kamlesh.md]] | July 15, 2026 | Need to send outline |
 | 20 | English Hackathon Punjab | [[people/meethi.md]] | August 15, 2026 |  |
@@ -81,9 +81,9 @@ This page contains Kamlesh Vyas's work tasks, pending team actions, and active s
 | 34 | UP AI | [[people/arvind.md]] | July 15, 2026 |  |
 | 35 | VBU | [[people/kamlesh.md]] | August 10, 2026 |  |
 | 36 | UP Hiring | [[people/arvind.md]] | August 10, 2026 |  |
-| 37 | Study AMLI LMS system & pitch Simulation/Content ideas | Harshit | July 20, 2026 | Meeting held on July 2 (Retained old task) |
-| 38 | hello from render | [[people/kamlesh.md]] | July 15, 2024 |  |
-| 39 | Confirm to IIT Delhi for July 15 training |  | ASAP |  |
+| 37 | NIMI Payment Due |  | ASAP |  |
+| 38 | Shobhit University |  | ASAP |  |
+| 39 | SIU Session |  | ASAP |  |
 
 ---
 
