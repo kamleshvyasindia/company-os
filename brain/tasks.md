@@ -84,6 +84,8 @@ This page contains Kamlesh Vyas's work tasks, pending team actions, and active s
 | 37 | NIMI Payment Due |  | ASAP |  |
 | 38 | Shobhit University |  | ASAP |  |
 | 39 | SIU Session |  | ASAP |  |
+| 40 | BMU Discussion with Davinder Singh | [[people/kamlesh.md]] | August 1, 2026 |  |
+| 41 | Google agreement on workshops, CoE and Courses | [[people/kamlesh.md]] | August 1, 2026 |  |
 
 ---
 
